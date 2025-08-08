@@ -1,0 +1,210 @@
+<ng-container style="height: 100%">
+
+    <div class="row top">
+        <div class="col-9 branding">
+            <img src="assets/images/bajaj_logo.svg" alt="" style="width: 280px;">
+        </div>
+
+        <div class="col-3 loginDetails">
+            <div class="row">
+                <div class="col-5" style="padding:10px;padding-left: 15px; padding-right: 0;">
+                    <span >Last Login:</span> &nbsp;
+                    <!-- <span style="font-weight: 500;">2023-08-04 5:20 PM</span> -->
+                    <span style="font-weight: 500;">{{lastLoginTime}}</span>
+                    
+                </div>
+                <div class="col-7 username" style="padding:13px; padding-left: 10px; padding-right: 0;">
+                    <!-- <img src="/assets/images/avatar.svg" alt="Avatar" style="width:28px; border-radius: 50%;"> -->
+
+                    <span style="position: absolute; top: 5px;" style="font-size: 13pt;
+                    position: absolute;
+                    top: 18px;">{{userName}}</span>
+                    &nbsp;
+
+                    <!-- <button mat-button [matMenuTriggerFor]="menu"  style="position: absolute;
+                    right: 15px;
+                    width: 20px!important;
+                    height:20px;
+                    top: 10px; cursor: pointer; border-radius: 50%;">
+                        
+                        <mat-icon>power_settings_new</mat-icon>
+                    </button> -->
+                    <!-- <mat-menu #menu="matMenu" >
+                        <button mat-menu-item (click)="logout()" >
+                            <span>
+                                <mat-icon>power_settings_new</mat-icon>
+                                logout
+                            </span>
+                        </button>
+                    </mat-menu>
+
+                    <span>
+                        <mat-icon [matMenuTriggerFor]="menu"  style="position: absolute;
+                        right: 30px;
+                        top: 16px; cursor: pointer;">power_settings_new</mat-icon>
+                    </span> -->
+
+                    
+
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="logout panel" style="position: absolute; right: 15px; top: 10px; cursor: pointer;">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item [routerLink] = "['/home']" (click)="clickedLink = '/home'; userPage = 0;">
+                            <span>Dashboard</span>
+                          </button>
+                        <button *ngIf="userDesignation == 'Admin'" mat-menu-item (click)="goToUser()">
+                            <span>users</span>
+                          </button>
+
+                          <button  mat-menu-item (click)="openModal(changepassword)">
+                            <span>Change Password</span>
+                          </button>
+
+                        <button mat-menu-item (click)="logout()">
+                          
+                          <span>logout</span>
+                        </button>
+                      
+                      </mat-menu>
+                    
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="menubar" *ngIf="userPage == 1">
+        <div class="col-5" style="display: flex;">
+
+            <div [style.color]="menuColor" class="menu"  (click)="userPage = 0">
+                <span >User Details</span>
+            </div>
+        </div>
+    </div>
+    <div class="menubar" *ngIf="userPage == 0">
+        <div class="col-10" style="display: flex;">
+            <div [style.color]="menuColor" class="menu" [routerLink] = "['/home']" (click)="clickedLink = '/home'" (click)="userPage = 0">
+                <!-- <span style="color:rgb(95, 178, 255)">Customer Loyality</span> -->
+                <span [ngClass]="(clickedLink =='/home')?'selectedMenu':''">Customer Loyalty</span>
+            </div>
+
+            <div class="menu" [routerLink] = "['/penetration']" (click)="clickedLink = '/penetration'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/penetration')?'selectedMenu':''">Upsell Penetration</span>
+            </div>
+
+            <div class="menu" [routerLink] = "['/upsellopportunity']" (click)="clickedLink = '/upsellopportunity'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/upsellopportunity')?'selectedMenu':''">Upsell Opportunity</span>
+            </div>
+
+            <!-- <div class="menu" [routerLink] = "['/Winbackpenetration']" (click)="clickedLink = '/Winbackpenetration'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/Winbackpenetration')?'selectedMenu':''">Winback Penetration</span>
+            </div> -->
+
+            <!-- <div class="menu"  (click)="wenbackPenCon()" (click)="userPage = 0">
+                <span >Winback Penetration</span>
+            </div> -->
+
+            <div class="menu" [routerLink] = "['/winbackopportunity']" (click)="clickedLink = '/winbackopportunity'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/winbackopportunity')?'selectedMenu':''">Winback Opportunity</span>
+            </div>
+
+            <div class="menu" [routerLink] = "['/waterfall']" (click)="clickedLink = '/waterfall'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/waterfall')?'selectedMenu':''">Customer Waterfall</span>
+            </div>
+
+            <div class="menu" [routerLink] = "['/bucketmovement']" (click)="clickedLink = '/bucketmovement'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/bucketmovement')?'selectedMenu':''">Bucket Movement</span>
+            </div>
+
+            <div class="menu" [routerLink] = "['/ppc']" (click)="clickedLink = '/ppc'" (click)="userPage = 0">
+                <span [ngClass]="(clickedLink =='/ppc')?'selectedMenu':''">PPC</span>
+            </div>
+
+            <!-- <div class="menu" [routerLink] = "['/meeting_tracker']" (click)="clickedLink = '/meeting_tracker'">
+                <span [ngClass]="(clickedLink =='/meeting_tracker')?'selectedMenu':''">Meeting Tracker</span>
+            </div> -->
+            
+        </div>
+
+        <div class="col-2 refreshTime text-right">
+            <span>Last Refresh On:</span>
+            &nbsp;
+            <span> {{current_date}}</span>
+        </div>
+
+    </div>
+
+    
+
+
+    <div>
+        <router-outlet></router-outlet> <!-- this section makes the connection between parent and children components -->  
+    </div>
+    
+
+
+</ng-container>
+
+
+
+<button id="passwordchng" [hidden]="true" (click)="openModal(changepassword)"></button>
+
+
+
+
+
+<ng-template #changepassword>
+    <div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 40px; padding: 3% !important; font-size: 13pt;">
+        Change Password
+    </div>
+<div style="height: 100%; width: 100%; padding: 5%;">
+    <div class="row"> 
+        <span class="label">Current Password</span>
+        
+        <input class="form-control"  type="password" [(ngModel)]="currentpassword">
+    </div>
+
+    <div class="row"> 
+        <span class="label">New Password</span>
+        
+        <input class="form-control"  type="password" [(ngModel)]="newpassword">
+    </div>
+    <div class="row"> 
+        <span class="label">Confirm Password</span>
+        
+        <input class="form-control"  type="password" [(ngModel)]="confirmpassword">
+        <br>
+        <!-- {{newpassword}}-{{confirmpassword}} -->
+        <span *ngIf="newpassword != confirmpassword" style="color:red">password does not match</span>
+    </div>
+    <div class="row" style="margin-top: 1rem !important;">
+        <button class="filterApplyButton" (click)="changeUserPassword()">Change Password</button>
+    </div>
+</div>
+
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-drawer-container class="example-container" autosize>
+</mat-drawer-container> -->
+
+

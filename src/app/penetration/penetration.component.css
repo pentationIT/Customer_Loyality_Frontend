@@ -1,0 +1,91 @@
+.filterButton{
+  padding-top: 10px;
+  padding-bottom: 10px; 
+}
+
+.imdfilter g-multiselect-dropdown .dropdown-btn{
+  display: none !important;
+}
+.dropdown_icon{
+/* position: absolute;
+color: black;
+right: 10%;
+
+margin-top: 5%;
+font-size: 20pt;
+cursor: pointer; */
+
+position: absolute;
+  color: #7d7d7d;
+  right: 12%;
+  /* margin-top: 3%; */
+  font-size: 30pt;
+  cursor: pointer;
+}
+input::-webkit-input-placeholder {
+color: white; /*Change the placeholder color*/
+opacity: 1; /*Change the opacity between 0 and 1*/
+}
+
+input[type=text] {
+  /* padding: 6px; */
+  /* margin-top: 8px; */
+  /* font-size: 17px; */
+  /* border: solid 0.1 px black; */
+  /* border-radius: 2%; */
+  background: #3c3c3c52 !important;
+  color: white;width: 100% !important; 
+  border:none; 
+  /* font-weight: bold; */
+  padding: 8px;
+  font-size: 10pt;
+  padding-left: 12px;
+}
+/*   
+ .search-container button {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+} */
+
+.search{
+  /* position: absolute;
+  color: black;
+  right: 15%;
+  
+  margin-top: 5%;
+  font-size: 20pt;
+  cursor: pointer; */
+  position: absolute;
+  color: white;
+  right: 18%;
+  margin-top: 4%;
+  font-size: 15pt;
+  cursor: pointer;
+}
+
+.close_icon{
+  cursor: pointer;
+  color: black;
+  position: absolute;
+  right: 0;
+  font-size: 12pt;
+}
+.infoBox{
+  position: absolute; background-color: white; color:black; border: solid 0.1px black; border-radius: 1%; right:10%; padding:2%;
+}
+
+
+
+.minWidth{
+  min-width: 130px;
+}

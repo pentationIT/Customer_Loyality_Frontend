@@ -1,0 +1,27 @@
+.form-label{
+    font-weight: bold;
+    padding: 1% !important;
+}
+
+.multiselectFilter{
+    margin-bottom: 10px !important;
+    border: solid 1px #d7d7d7;
+    background: white;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.nec{
+  color:red;
+  font-size: 9pt;
+  /* content: '*'; */
+}

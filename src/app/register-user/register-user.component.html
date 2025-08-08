@@ -1,0 +1,179 @@
+<!-- <p>register-user works!</p> -->
+<div class="row" style="padding: 0.5% !important; background-color: white;">
+    <img src="assets/images/bajaj_logo.svg" alt="" style="width: 280px;">
+
+</div>
+<div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 50px; padding: 1% !important; font-size: 13pt;">
+    Register User
+</div>
+<div style="height: calc(100% - 100px); width: 100%; padding: 2%;">
+    <div style="height: 100%; width: 100%; padding: 2%; background-color: white; position: relative; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+    <div class="row " style="    margin-top: 1rem !important;">
+
+        <div class="col-2 form-label"><span >Name of User <span class="nec">*</span>
+        </span></div>
+        <div class="col-4">
+            <input class="form-control" type="text" [(ngModel)]="name">
+        </div>
+    
+    
+        <div class="col-2 form-label"><span >Employee Id <span class="nec">*</span> </span></div>
+        <div class="col-4">
+            <input class="form-control" type="text" [(ngModel)]="empId">
+        </div>
+    
+        
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+    
+    
+        <div class="col-2 form-label" ><span >Email Id <span class="nec">*</span></span></div>
+        <div class="col-4">
+            <input class="form-control" type="text" [(ngModel)]="emailid">
+        </div>
+    
+    
+        <div class="col-2 form-label"><span >Mobile No. <span class="nec">*</span></span></div>
+        <div class="col-4">
+            <input class="form-control" type="number" [(ngModel)]="mobileno">
+        </div>
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+        <div class="col-2 form-label"><span >Designation <span class="nec">*</span></span></div>
+        <div class="col-4">
+            <input class="form-control" type="text" [(ngModel)]="designation">
+        </div>
+    
+        <div class="col-2 form-label"><span >Organization <span class="nec">*</span></span></div>
+        <div class="col-4">
+            <input class="form-control" type="text" [(ngModel)]="organization">
+        </div>
+    
+        
+    
+    
+        
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+        <!-- <div class="col-2 form-label"><span >Main Channel</span></div>
+        <div class="col-4">
+            
+            <div class="multiselectFilter">
+                
+                <ng-multiselect-dropdown
+                    
+                    [settings]="mainChannel_dropdownSettings"
+                    [data]="mainChannel_dropdownList"
+                    [(ngModel)]="mainChannel_selectedItems"
+    
+                    (onSelect)="get_subChannel_list();get_imdChannel_list()"
+                    (onSelectAll)="get_subChannel_list();get_imdChannel_list();"
+                    (onDeSelect)="get_subChannel_list();get_imdChannel_list();"
+                    (onDeSelectAll)="get_subChannel_list();get_imdChannel_list();"
+                    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div> -->
+    
+        <div class="col-2 form-label"><span >Imd Channel</span></div>
+        <div class="col-4">
+            <div class="multiselectFilter">
+                <!-- <span class="filterLabel" >IMD CHANNEL</span> -->
+                <ng-multiselect-dropdown
+                    
+                    [settings]="imdChannel_dropdownSettings"
+                    [data]="imdChannel_dropdownList"
+                    [(ngModel)]="imdChannel_selectedItems"
+    
+                    (onSelect)="get_subChannel_list();"
+                    (onSelectAll)="get_subChannel_list();"
+                    (onDeSelect)="get_subChannel_list();"
+                    (onDeSelectAll)="get_subChannel_list();"
+    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+    
+        <div class="col-2 form-label"><span >Sub Channel</span></div>
+        <div class="col-4">
+            <div class="multiselectFilter">
+                <!-- <span class="filterLabel" >SUB CHANNEL NAME</span> -->
+                <ng-multiselect-dropdown
+                    
+                    [settings]="subChannelCodeName_dropdownSettings"
+                    [data]="subChannelCodeName_dropdownList"
+                    [(ngModel)]="subChannelCodeName_selectedItems"
+                    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+    
+        
+    
+    </div>
+    <div class="row" style="    margin-top: 1rem !important;">
+        
+    </div>
+    
+    
+    <div class="row" style="position: absolute; bottom: 5%; right: 3%;">
+        <button class="filterApplyButton" style="width: 150px;" (click)="openConfirmation(confirmationBox)">Submit</button>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+<ng-template #confirmationBox>
+    <div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 35px; padding: 2% !important; font-size: 13pt;">
+        !!! Confirmation
+    </div>
+<div style="height: 100%; width: 100%; padding: 2%;">
+    <div class="row " style="    margin-top: 1rem !important;">
+
+        <div class="col-12">
+            Are you sure? Do you want to submit this form?
+        </div>
+        
+    
+    </div>
+    
+    
+    
+    
+    <div class="row"  style="    margin-top: 1rem !important;">
+        <div class="col-12" style="display: flex;">
+
+            <button class="filterApplyButton"  style="width: 150px;background-color:gray" (click)="closeModal()">No</button>
+
+            &nbsp;
+        <!-- </div>
+        <div class="col-6"> -->
+
+            <button class="filterApplyButton" style="width: 150px;" (click)="registerUser()">Yes</button>
+        </div>
+
+    </div>
+
+
+</div>
+</ng-template>

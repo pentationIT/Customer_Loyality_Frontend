@@ -1,0 +1,43 @@
+.fullPage{
+    height: auto!important;    
+    
+    padding: 5px!important;
+    /* padding-top: 30px!important; */
+    /* padding-bottom: 30px!important; */
+}
+.content-area{
+    margin-top: 100px;
+    height: calc(100vh - 110px)!important;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 10px 5px #88888895;
+}
+.pageName{
+    margin-bottom: 30px!important;
+}
+.inputSection {
+    padding-left: 20px!important;
+}
+.inputSectionsGap{
+    height:10px!important;
+}
+input, select{
+    height: 35px;
+    font-size: 14px;
+}
+textarea{
+    font-size: 14px;
+}
+.cancelBtn, .saveBtn {
+    width: 90%!important;
+    height: 35px;
+    color: #ffffff;
+    border: 1px solid rgba(110, 110, 110, 0.438);
+    border-radius: 5px;
+}
+.cancelBtn{
+    /* margin-right: 5px; */
+    background-color: rgb(238, 99, 99);
+}
+.saveBtn{
+    background-color: rgb(0, 95, 204);    
+}

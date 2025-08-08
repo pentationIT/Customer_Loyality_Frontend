@@ -1,0 +1,994 @@
+<!-- <p>penetration works!</p> -->
+
+
+<ng-container>
+    <div class="row">
+        <div class="sidenav"   [ngClass]="(sideNavOpen == false)?'sidenav_close':''">
+            <div class="row filterButtonArea" style=" width:100%!important;height: 100%; overflow-y: scroll;">
+
+                    <div class="col-12 mainMenu" style="background-color: #053b5a!important; color: #ffffff; padding:15px;padding-bottom: 10px; font-size: 12px;">
+
+                        
+
+
+                        <!-- <div class="multiselectFilter">
+                            <ng-multiselect-dropdown
+                                [placeholder]="'CATEGORY'"
+                                [settings]="category_dropdownSettings"
+                                [data]="category_dropdownList"
+                                [(ngModel)]="category_selectedItems"
+                                (onSelect)="show_Hide_monthYear_list()"
+                                (onDeSelect)="show_Hide_monthYear_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div> -->
+
+                        <!-- <div *ngIf="show_monthList" class="multiselectFilter"> -->
+                        <div  class="multiselectFilter">
+
+                            <!-- <span class="filterLabel" >MONTH YEAR</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'MONTH YEAR'"
+                                [settings]="month_dropdownSettings"
+                                [data]="month_dropdownList"
+                                [(ngModel)]="month_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        
+                        
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >MAIN CHANNEL</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'MAIN CHANNEL'"
+                                [settings]="mainChannel_dropdownSettings"
+                                [data]="mainChannel_dropdownList"
+                                [(ngModel)]="mainChannel_selectedItems"
+                                (onSelect)="get_imdChannel_list(); get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onSelectAll)="get_imdChannel_list(); get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelect)="get_imdChannel_list(); get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelectAll)="get_imdChannel_list(); get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+<!-- 
+                        (onSelect)="get_subChannel_list()"
+                                (onSelectAll)="get_subChannel_list()"
+                                (onDeSelect)="get_subChannel_list()"
+                                (onDeSelectAll)="get_subChannel_list()" -->
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >IMD CHANNEL</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'IMD CHANNEL'"
+                                [settings]="imdChannel_dropdownSettings"
+                                [data]="imdChannel_dropdownList"
+                                [(ngModel)]="imdChannel_selectedItems"
+
+                                (onSelect)=" get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onSelectAll)=" get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelect)=" get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelectAll)=" get_subChannel_list();  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >SUB CHANNEL</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'SUB CHANNEL'"
+                                [settings]="subChannel_dropdownSettings"
+                                [data]="subChannel_dropdownList"
+                                [(ngModel)]="subChannel_selectedItems"
+                                (onSelect)="  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onSelectAll)="  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelect)="  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                (onDeSelectAll)="  get_imdCodeName_list();  get_subImdCodeName_list();"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >LOB</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'LOB'"
+                                [settings]="mappedLob_dropdownSettings"
+                                [data]="mappedLob_dropdownList"
+                                [(ngModel)]="mappedLob_selectedItems"
+                                (onSelect)="get_rider_list()"
+                                (onSelectAll)="get_rider_list()"
+                                (onDeSelect)="get_rider_list()"
+                                (onDeSelectAll)="get_rider_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>       
+                        
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >RIDER</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'RIDER'"
+                                [settings]="rider_dropdownSettings"
+                                [data]="rider_dropdownList"
+                                [(ngModel)]="rider_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>  
+
+                                                
+                        <div class="multiselectFilter">
+                            <!-- <span  class="filterLabel" >P ACC LOB</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'P ACC LOB'"
+                                [settings]="pAccLob_dropdownSettings"
+                                [data]="pAccLob_dropdownList"
+                                [(ngModel)]="pAccLob_selectedItems" 
+                                (onSelect)="get_productCodeName_list()"
+                                (onSelectAll)="get_productCodeName_list()"
+                                (onDeSelect)="get_productCodeName_list()"
+                                (onDeSelectAll)="get_productCodeName_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >PRODUCT CODE</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'PRODUCT CODE'"
+                                [settings]="productCodeName_dropdownSettings"
+                                [data]="productCodeName_dropdownList"
+                                [(ngModel)]="productCodeName_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <!-- <div class="multiselectFilter">
+                            <span class="filterLabel" >Product Code Bs</span>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'PRODUCT CODE BS'"
+                                [settings]="productCodeNameBS_dropdownSettings"
+                                [data]="productCodeNameBS_dropdownList"
+                                [(ngModel)]="productCodeNameBS_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div> -->
+
+                        
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >ZONE</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'ZONE'"
+                                [settings]="zone_dropdownSettings"
+                                [data]="zone_dropdownList"
+                                [(ngModel)]="zone_selectedItems"
+                                (onSelect)="get_state_list(); get_location_list()"
+                                (onSelectAll)="get_state_list(); get_location_list()"
+                                (onDeSelect)="get_state_list(); get_location_list()"
+                                (onDeSelectAll)="get_state_list(); get_location_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >STATE</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'STATE'"
+                                [settings]="state_dropdownSettings"
+                                [data]="state_dropdownList"
+                                [(ngModel)]="state_selectedItems"
+                                (onSelect)="get_location_list()"
+                                (onSelectAll)="get_location_list()"
+                                (onDeSelect)="get_location_list()"
+                                (onDeSelectAll)="get_location_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >LOCATION</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'LOCATION'"
+                                [settings]="location_dropdownSettings"
+                                [data]="location_dropdownList"
+                                [(ngModel)]="location_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >ZONE HEAD</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'ZONE HEAD'"
+                                [settings]="zonehead_dropdownSettings"
+                                [data]="zoneHeadList"
+                                [(ngModel)]="zonehead_selectedItems"
+                               
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >ZRM</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'ZRM'"
+                                [settings]="zrm_dropdownSettings"
+                                [data]="zrmList"
+                                [(ngModel)]="zrm_selectedItems"
+
+                                (onSelect)="getZRM_GEOList(); getCircleHeadList(); getSRMList()"
+                                (onSelectAll)="getZRM_GEOList(); getCircleHeadList(); getSRMList()"
+                                (onDeSelect)="getZRM_GEOList(); getCircleHeadList(); getSRMList()"
+                                (onDeSelectAll)="getZRM_GEOList(); getCircleHeadList(); getSRMList()"
+                               
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+                    
+
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >ZRM GEO</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'ZRM GEO'"
+                                [settings]="zrmgeo_dropdownSettings"
+                                [data]="zrmgeoList"
+                                [(ngModel)]="zrmgeo_selectedItems"
+
+                                (onSelect)=" getCircleHeadList(); getSRMList()"
+                                (onSelectAll)=" getCircleHeadList(); getSRMList()"
+                                (onDeSelect)=" getCircleHeadList(); getSRMList()"
+                                (onDeSelectAll)=" getCircleHeadList(); getSRMList()"
+                               
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >CIRCLE HEAD</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'CIRCLE HEAD'"
+                                [settings]="circleHead_dropdownSettings"
+                                [data]="circleHeadList"
+                                [(ngModel)]="circleHead_selectedItems"
+
+                                (onSelect)=" getSRMList()"
+                                (onSelectAll)="getSRMList()"
+                                (onDeSelect)=" getSRMList()"
+                                (onDeSelectAll)=" getSRMList()"
+                               
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >SRM</span> -->
+                            <ng-multiselect-dropdown
+                                [placeholder]="'SRM'"
+                                [settings]="srm_dropdownSettings"
+                                [data]="srmList"
+                                [(ngModel)]="srm_selectedItems"
+                               
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                        <!-- <div class="multiselectFilter">
+                            <span  class="filterLabel" >Sub Imd Channel</span>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'SUBIMD CHANNEL'"
+                                [settings]="subImdChannel_dropdownSettings"
+                                [data]="subImdChannel_dropdownList"
+                                [(ngModel)]="subImdChannel_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div> -->
+                        <div class="multiselectFilter imdfilter" >
+                            <!-- <span class="filterLabel" >IMD CODE(Single)</span> -->
+                            <div class="row">
+                                <!-- <form > -->
+                                  <input   type="text" placeholder="IMD CODE(Single)" name="search" [(ngModel)]="imdCode_search" value="imdCode_search" (keyup.enter)="get_imdCodeName_list();showDropdownImd = 1;">
+                                  <!-- <button type="submit">Submit</button> -->
+                                  <mat-icon class="search" (click)="get_imdCodeName_list();showDropdownImd = 1;">search</mat-icon>
+                                  <!-- <mat-icon class="search" (click)="get_imdCodeName_list();showDropdownImd = 1;">search</mat-icon> -->
+
+
+                                  <mat-icon class="dropdown_icon" *ngIf="showDropdownImd == 0" (click)="showDropdownImd = 1">arrow_drop_down</mat-icon>
+                                  <mat-icon class="dropdown_icon" *ngIf="showDropdownImd == 1" (click)="showDropdownImd = 0">arrow_drop_up</mat-icon>
+
+                                <!-- </form> -->
+
+                                
+                            </div>
+                            <div class="row" *ngIf="showDropdownImd == 1" style="height:110px; overflow-y: scroll;">
+                                
+                                <ul style="padding-left: 3px !important;padding-top: 6px !important;">
+
+                                    <ng-container *ngFor="let imd of imdCodeName_dropdownList">
+                                        <li style=" font-size: 11pt;"> <input type="checkbox"  [checked]="(imd.checked) && (imd_code == imd.codeImd)" [(ngModel)]="imd.checked" (change)="checkImd( imd.codeImd, imd.checked);  get_subImdCodeName_list();" >
+                                            &nbsp;
+                                            <!-- &nbsp; -->
+                                            <!-- <span style="color:white">
+                                                {{imd.checked}} {{imd_code}}</span> -->
+                                        <span style="color:white">{{imd.codeImd}}</span></li>
+                                </ng-container>
+                                </ul>
+                            </div>
+                              
+                            <!-- <ng-multiselect-dropdown
+                                [placeholder]="''"
+                                [settings]="imdCodeName_dropdownSettings"
+                                [data]="imdCodeName_dropdownList"
+                                [(ngModel)]="imdCodeName_selectedItems"
+                                
+                                (onSelect)="get_subImdCodeName_list()"
+                                (onSelectAll)="get_subImdCodeName_list()"
+                                (onDeSelect)="get_subImdCodeName_list()"
+                                (onDeSelectAll)="get_subImdCodeName_list()"
+                                >
+                            </ng-multiselect-dropdown> -->
+                        </div>
+
+                        
+                        <div class="multiselectFilter">
+                            <!-- <span class="filterLabel" >SUB IMD CODE(Single)</span> -->
+                            <div class="row">
+                                <!-- <form > -->
+                                  <input  type="text" placeholder="SUB IMD CODE(Single)" name="search" [(ngModel)]="subImdCode_search" value="subImdCode_search" (keyup.enter)="get_subImdCodeName_list();showDropdownSubImd = 1" >
+                                  <!-- <button type="submit">Submit</button> -->
+                                  <mat-icon class="search" (click)="get_subImdCodeName_list();showDropdownSubImd = 1">search</mat-icon>
+
+                                  <mat-icon class="dropdown_icon" *ngIf="showDropdownSubImd == 0" (click)="showDropdownSubImd = 1">arrow_drop_down</mat-icon>
+                                  <mat-icon class="dropdown_icon" *ngIf="showDropdownSubImd == 1" (click)="showDropdownSubImd = 0">arrow_drop_up</mat-icon>
+                                <!-- </form> -->
+                              </div>
+                            <!-- <ng-multiselect-dropdown
+                                [placeholder]="'SUBIMD CODE'"
+                                [settings]="subImdCodeName_dropdownSettings"
+                                [data]="subImdCodeName_dropdownList"
+                                [(ngModel)]="subImdCodeName_selectedItems"
+                                >
+                            </ng-multiselect-dropdown> -->
+
+                            <div class="row" *ngIf="showDropdownSubImd == 1" style="height:110px; overflow-y: scroll;">
+                                
+                                <ul style="padding-left: 3px !important;padding-top: 6px !important;">
+
+                                    <ng-container *ngFor="let subimd of subImdCodeName_dropdownList">
+                                        <li style=" font-size: 11pt;"> <input type="checkbox"  [checked]="(subimd.checked) && (imd_code == subimd.subImdCode)" [(ngModel)]="subimd.checked" (change)="checkSubImd( subimd.subImdCode, subimd.checked)" >
+                                            &nbsp;
+                                            <!-- &nbsp; -->
+                                            <!-- <span style="color:white">
+                                                {{imd.checked}} {{imd_code}}</span> -->
+                                        <span style="color:white">{{subimd.subImdCode}}</span></li>
+                                </ng-container>
+                                </ul>
+                            </div>
+
+
+                        </div>
+
+                        <br>
+                       
+
+
+                        <div class="multiselectFilter" style="margin-left: 5%;">
+                            <div *ngIf="imdInfo == 1" class="infoBox" >
+                                <mat-icon class="close_icon" (click)="imdInfo = 0">close</mat-icon>
+                                <div class="row" style="padding:5% !important">
+
+                                    <!-- Keep all IMDs in the first column of a CSV file(.csv) without any header/column name. -->
+                                    Only CSV Files are accepted. Please remove all column names.
+                                </div>
+                                </div>
+                            <span class="filterLabel" >IMD CODE(Multiple)  <mat-icon style="font-size: 12pt; cursor:pointer" (click)="imdInfo = 1" >info</mat-icon></span>
+                            
+                            <input accept=" .csv" type="file" #file id="fileUpImd" [multiple]="false" (change)="saveFileImd($event)"/>
+
+                            
+
+                        </div>
+
+                        <div class="multiselectFilter" style="margin-left: 5%;">
+                            <!-- <span class="filterLabel" >SUB IMD CODE(Multiple)</span>
+                            <input accept=" .csv" type="file" #file id="fileUpSubImd" [multiple]="false" (change)="saveFileSubImd($event)"/> -->
+
+
+                            <div *ngIf="subImdInfo == 1" class="infoBox" >
+                                <mat-icon class="close_icon" (click)="subImdInfo = 0">close</mat-icon>
+                                <div class="row" style="padding:5% !important">
+
+                                    <!-- Keep all SUB IMDs in the first column of a CSV file(.csv) without any header/column name. -->
+                                    Only CSV Files are accepted. Please remove all column names.
+                                </div>
+                                </div>
+                            <span class="filterLabel" >SUB IMD CODE(Multiple)  <mat-icon style="font-size: 12pt; cursor:pointer" (click)="subImdInfo = 1" >info</mat-icon></span>
+                            
+                            <input accept=" .csv" type="file" #file id="fileUpSubImd" [multiple]="false" (change)="saveFileSubImd($event)"/>
+                           
+                        </div>
+                        <!-- <div class="multiselectFilter">
+                            
+                            <span class="filterLabel" >IMD CODE(Single)</span>
+                            <div class="row">
+                                
+                                  <input type="text" placeholder="Search.." name="search" [(ngModel)]="imdCode_search" value="imdCode_search" >
+
+                                  <mat-icon class="search" (click)="get_imdCodeName_list()">search</mat-icon>
+                                
+                              </div>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'IMD CODE'"
+                                [settings]="imdCodeName_dropdownSettings"
+                                [data]="imdCodeName_dropdownList"
+                                [(ngModel)]="imdCodeName_selectedItems"
+                                (onSelect)="get_subImdCodeName_list()"
+                                (onSelectAll)="get_subImdCodeName_list()"
+                                (onDeSelect)="get_subImdCodeName_list()"
+                                (onDeSelectAll)="get_subImdCodeName_list()"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+
+                       
+
+
+                        <div class="multiselectFilter">
+                            
+                            <span class="filterLabel" >SUB IMD CODE(Single)</span>
+                            <div class="row">
+
+                                  <input type="text" placeholder="Search.." name="search" [(ngModel)]="subImdCode_search" value="subImdCode_search" >
+                                  
+                                  <mat-icon class="search" (click)="get_subImdCodeName_list()">search</mat-icon>
+
+                              </div>
+                            <ng-multiselect-dropdown
+                                [placeholder]="'SUBIMD CODE'"
+                                [settings]="subImdCodeName_dropdownSettings"
+                                [data]="subImdCodeName_dropdownList"
+                                [(ngModel)]="subImdCodeName_selectedItems"
+                                >
+                            </ng-multiselect-dropdown>
+                        </div>
+                        <div class="multiselectFilter">
+                            <span class="filterLabel" >IMD CODE(Multiple)</span>
+                            <input accept=".xlsx, .csv" type="file" #file id="fileUpImd" [multiple]="false" (change)="saveFileImd($event)"/>
+
+                        </div>
+
+                        <br>
+                        <div class="multiselectFilter">
+                            <span class="filterLabel" >SUB IMD CODE(Multiple)</span>
+                            <input accept=".xlsx, .csv" type="file" #file id="fileUpSubImd" [multiple]="false" (change)="saveFileSubImd($event)"/>
+                           
+                        </div> -->
+
+
+
+                        <br><br><br><br><br><br><br><br><br>
+
+                        
+
+                    </div>
+                    
+
+                    
+                    
+            </div>
+
+            <!-- <div class="row" style="position: fixed; left:0; bottom:0; width:250px; "> -->
+            <div class="row" style="position: fixed; left:0; bottom:0; width:250px; ">
+                <div class="col-6" style="padding:0">
+                    <button  class="filterApplyButton" style=" background-color: rgb(238, 99, 99);" (click)="resetAll()">
+                        <span>Reset All</span>
+                    </button>
+                    
+                </div>
+
+                <div class="col-6" style="padding:0">
+                    <button  class="filterApplyButton" [disabled]="blockFilter" (click)="callFilterResult('summary',0, 0); callFilterResult('details', 0, 0)">
+                    <!-- <button  class="filterApplyButton"   (click)=" getFilteredResult('summary', 0)"> -->
+                        <span>Filter</span>
+                    </button>
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="mainArea"  [ngClass]="(sideNavOpen == false)?'mainArea_max':''">
+
+            <button class="toogleSidenav" (click)="sideNavOpen = !sideNavOpen"  [ngClass]="(sideNavOpen == false)?'toogleSidenav_close':''">
+                <i *ngIf="sideNavOpen" class="fa fa-arrow-left"></i>
+                <i *ngIf="!sideNavOpen" class="fa fa-arrow-right"></i>
+            </button>
+
+            <div class="row mainAreaPad">                
+
+                <div class="col-12">
+
+                    <div *ngIf="reportStatus" class="row reportTimePad" id="reportTimePad">
+                        <div class="col-11">
+                            <p>Report Start Time: {{reportStart}} || Report End Time: {{reportEnd}} || Total Duration: {{reportDuration}}</p>
+                        </div>
+                        <div class="col-1 text-right">
+                            <p style="font-size: 13px; font-weight: bold; cursor: pointer;" (click)="reportStatus=false;reportCrossStatus = true">X</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row reportNamePad">
+                        <div class="col-6">
+                            <p class="reportName">Summary Report</p>
+                        </div>
+                        <div class="col-6" style="display: flex; justify-content: right;">
+                            
+                            <button class="downloadButton" [title]="'Download Policy Wise Report'" (click)="downloadPolicyWiseReport()">
+                                <mat-icon>library_books</mat-icon>
+
+                            </button>
+                            <button class="downloadButton" (click)="callFilterResult('summary', 1, 0)">
+                                <mat-icon>cloud_download</mat-icon>
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <!-- <br> -->
+
+                    <div class="reportArea mt-1">
+                        <!-- {{monthOnMonthFlag}}/ -->
+                        <table *ngIf="monthOnMonthFlag == 0" class="table table-hover">
+
+                            <thead>
+                                <!-- <tr>
+                                    <th style="padding:0 !important" [attr.colspan]="summary_keyColcount" *ngIf="summary_keyColcount!=0"  class="columnColor"></th>
+                                    <th style="padding:0 !important" colspan="7"  class="columnColor">YTD</th>
+                                    <th style="padding:0 !important" colspan="11"  class="columnColor">MTD</th>
+                                    <th style="padding:0 !important" colspan="2"  class="columnColor">MTD LMIS</th>
+                                </tr> -->
+                                
+                            </thead>
+                            <thead>
+                                <tr>
+                                    <th style="padding:0 !important" [attr.colspan]="summary_keyColcount" *ngIf="summary_keyColcount!=0"  class="columnColor"></th>
+                                    <th style="padding:0 !important" [attr.colspan]="monthYearList.length"  class="columnColor">Opportunity Month</th>
+                                    <!-- <th style="padding:0 !important" colspan="4"  class="columnColor">NOP</th>
+                                    <th style="padding:0 !important" colspan="3"  class="columnColor">PREM</th>
+                                    <th style="padding:0 !important" colspan="6"  class="columnColor">NOP</th>
+                                    <th style="padding:0 !important" colspan="5"  class="columnColor">PREM</th>
+                                    <th style="padding:0 !important" colspan="2"  class="columnColor">NOP</th> -->
+                                </tr>
+                                
+                            </thead>
+
+                            <thead>
+                              <tr>
+                                <ng-container *ngFor="let col of summary_mainColList">
+                                    <th class="columnColor">{{col}}</th>
+                                </ng-container>
+
+                                <ng-container *ngFor="let col of monthYearList">
+                                    <th class="columnColor">{{col}}</th>
+                                </ng-container>
+    
+    
+    
+    
+                                
+                                
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let rowline of summary_filteredResult" >
+
+                                    <tr [ngClass]="(rowline.BUSINESS_CATEGORY == 'Customer Loyalty Total')?'rowColor_CLtotal':''">
+
+                                        <ng-container *ngFor="let col of summary_mainColList">
+                                            <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                        </ng-container>
+
+                                        <ng-container *ngFor="let col of monthYearList">
+                                            <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                        </ng-container>
+            
+            
+                                        
+                                      
+                                                                             
+                                        
+                                    </tr>  
+
+                                </ng-container>                  
+                              
+                            </tbody>
+                          </table>
+
+
+
+
+                        <table *ngIf="monthOnMonthFlag == 1" class="table table-hover">
+
+                        <thead>
+                            <tr>
+                                <th style="padding:0 !important" [attr.colspan]="summary_keyColcount" *ngIf="summary_keyColcount!=0"  class="columnColor"></th>
+
+                                <ng-container *ngFor="let eachMonth of monthYearList">
+                                    <th style="padding:0 !important" class="columnColor" colSpan="7">{{eachMonth}}</th>
+                                </ng-container>
+                                <!-- <th colspan="7"  class="columnColor">YTD</th>
+                                <th colspan="11"  class="columnColor">MTD</th>
+                                <th colspan="2"  class="columnColor">MTD LMIS</th> -->
+                            </tr>
+                            
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th style="padding:0 !important" [attr.colspan]="summary_keyColcount" *ngIf="summary_keyColcount!=0"  class="columnColor"></th>
+                                <ng-container *ngFor="let eachMonth of monthYearList">
+                                    <th style="padding:0 !important" class="columnColor" colSpan="4">NOP</th>
+                                    <th  style="padding:0 !important" class="columnColor" colSpan="3">PREMIUM</th>
+
+                                </ng-container>
+
+                                <!-- <th colspan="4"  class="columnColor">NOP</th>
+                                <th colspan="3"  class="columnColor">PREM</th>
+                                <th colspan="6"  class="columnColor">NOP</th>
+                                <th colspan="5"  class="columnColor">PREM</th>
+                                <th colspan="2"  class="columnColor">NOP</th> -->
+                            </tr>
+                            
+                        </thead>
+
+                        <thead>
+                            <tr>
+                            <ng-container *ngFor="let col of summary_mainColList">
+                                <th class="columnColor">{{col}}</th>
+                            </ng-container>
+
+                            <ng-container *ngFor="let eachMonth of monthYearList">
+                                <th scope="col"  class="columnColor" >OPP</th>
+                                <th scope="col"  class="columnColor" >%PENT</th>
+                                <th scope="col"  class="columnColor" >LYFTM %PENT</th>
+                                <th scope="col"  class="columnColor" >%Variance</th>
+
+                                <th scope="col"  class="columnColor" >PREM CONV</th>
+                                <th scope="col"  class="columnColor" >LYFTM PREM CONV</th>
+                                <th scope="col"  class="columnColor" >GROWTH</th>
+
+
+                            </ng-container>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let rowline of summary_filteredResult" >
+
+                                <tr [ngClass]="(rowline.BUSINESS_CATEGORY == 'Customer Loyalty Total')?'rowColor_CLtotal':''">
+
+                                    <ng-container *ngFor="let col of summary_mainColList">
+                                        <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                    </ng-container>
+
+                                    <ng-container *ngFor="let eachMonth of monthYearList">
+                                        
+                                    <td class="tableColumnStyle">{{rowline[eachMonth + '_OPP_NOP']}}</td>
+                                    <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_PENT_PERC'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_PENT_PERC']}}%</td>
+                                    <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_LYFTM_PENT_PERC'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_LYFTM_PENT_PERC']}}%</td>
+                                    <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_PERC_DELTA'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_PERC_DELTA']}}%</td>
+
+                                    <td class="tableColumnStyle">{{rowline[eachMonth + '_CONV_PREM']}}</td>
+                                    <td class="tableColumnStyle">{{rowline[eachMonth + '_LYFTM_CONV_PREM']}}</td>
+                                    <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_GROWTH'] >= 0)?'growth':'degrowth'" >{{rowline[eachMonth + '_GROWTH']}}%</td>
+
+                                   
+
+        
+        
+                                    </ng-container>
+        
+        
+                                    
+                                  
+                                </tr>  
+
+                            </ng-container>                  
+                            
+                        </tbody>
+                        </table>
+                    </div>
+
+
+
+                    <!-- <br><br><br> -->
+
+
+
+                    <div class="row reportNamePad" style="margin-top: 20px!important;">
+                        <!-- <p class="reportName">Detail Report</p> -->
+                        <div class="col-6">
+                            <p class="reportName">Detail Report</p>
+                        </div>
+                        <div class="col-6" style="display: flex; justify-content: right;">
+                            <button class="downloadButton" (click)="callFilterResult('details', 1, 0)">
+                                <mat-icon>cloud_download</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <br> -->
+
+                    <div class="reportArea mt-1">
+                        <table *ngIf="monthOnMonthFlag == 0" class="table table-hover">
+
+                            <!-- <thead>
+                                <tr>
+                                    <th style="padding:0 !important" [attr.colspan]="details_keyColcount" *ngIf="details_keyColcount!=0" class="columnColor"></th>
+                                    <th style="padding:0 !important" colspan="7"  class="columnColor">YTD</th>
+                                    <th style="padding:0 !important" colspan="11"  class="columnColor">MTD</th>
+                                    <th style="padding:0 !important" colspan="2"  class="columnColor">MTD LMIS</th>
+                                </tr>
+                                
+                            </thead> -->
+                            <thead>
+                                <tr>
+                                    <th style="padding:0 !important" [attr.colspan]="details_keyColcount" *ngIf="details_keyColcount!=0"  class="columnColor"></th>
+                                    <th style="padding:0 !important" [attr.colspan]="monthYearList.length"  class="columnColor">Opportunity Month</th>
+                                    <!-- <th style="padding:0 !important" colspan="4"  class="columnColor">NOP</th>
+                                    <th style="padding:0 !important" colspan="3"  class="columnColor">PREM</th>
+                                    <th style="padding:0 !important" colspan="6"  class="columnColor">NOP</th>
+                                    <th style="padding:0 !important" colspan="5"  class="columnColor">PREM</th>
+                                    <th style="padding:0 !important" colspan="2"  class="columnColor">NOP</th> -->
+                                </tr>
+                                
+                            </thead>
+
+                            <thead>
+                              <tr>
+                                <ng-container *ngFor="let col of details_mainColList">
+                                    <th class="columnColor">{{col}}</th>
+                                </ng-container>
+                                <ng-container *ngFor="let col of monthYearList">
+                                    <th class="columnColor">{{col}}</th>
+                                </ng-container>
+    
+    
+    
+    
+                                <!-- <th scope="col"  class="columnColor">Opp YTD</th>
+                                <th scope="col"  class="columnColor">% YTD Pent</th>
+                                <th scope="col"  class="columnColor minWidth">% LYTD Pent</th>
+                                <th scope="col"  class="columnColor">% Variance</th>
+    
+                                <th scope="col"  class="columnColor minWidth">Prem Conv YTD</th>
+                                <th scope="col"  class="columnColor minWidth">Prem Conv LYTD</th>
+                                <th scope="col"  class="columnColor">% YTD Growth</th>
+                                <th scope="col"  class="columnColor">OPP MTD</th>
+                                <th scope="col"  class="columnColor minWidth">% MTD Pent</th>
+                                <th scope="col"  class="columnColor minWidth">% LYMTD Pent</th>
+                                <th scope="col"  class="columnColor minWidth">% Variance MTD</th>
+    
+                                <th scope="col"  class="columnColor minWidth">% CYLMTD Pent</th>
+                                <th scope="col"  class="columnColor minWidth">% Variance MTD Vs CYLMTD</th>
+                                <th scope="col"  class="columnColor minWidth">PREM MTD Conv</th>
+                                <th scope="col"  class="columnColor">PREM LYMTD</th>
+    
+                                <th scope="col"  class="columnColor minWidth">% MTD Growth</th>
+                                <th scope="col"  class="columnColor">CYLMTD PREM</th>
+                                <th scope="col"  class="columnColor minWidth">% Growth MTD Vs CYLMTD</th>
+                                <th scope="col"  class="columnColor minWidth">% LMIS MTD</th>
+    
+                                <th scope="col"  class="columnColor minWidth">% Variance MTD Vs LMIS</th> -->
+                                
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let rowline of details_filteredResult" >
+
+                                    <tr [ngClass]="(rowline.BUSINESS_CATEGORY == 'Customer Loyalty Total')?'rowColor_CLtotal':''">
+
+                                        <ng-container *ngFor="let col of details_mainColList">
+                                            <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                        </ng-container>
+
+                                        <ng-container *ngFor="let col of monthYearList">
+                                            <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                        </ng-container>
+
+
+
+                                        <!-- <td class="tableColumnStyle">{{rowline.YTD_OPP_NOP}}</td>
+                                       <td class="tableColumnStyle" >{{rowline.YTD_PENT_PERC}}%</td>
+                                       <td class="tableColumnStyle" >{{rowline.LYTD_PENT_PERC}}%</td>
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.DELTA_YTD_PENT >= 0)?'growth':'degrowth'">{{rowline.DELTA_YTD_PENT}}%</td>
+
+
+                                       <td class="tableColumnStyle">{{rowline.YTD_CONV_PREMIUM}}</td>
+                                       <td class="tableColumnStyle">{{rowline.LYTD_CONV_PREMIUM}}</td>
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.YTD_PREM_GROWTH_PERC >= 0)?'growth':'degrowth'">{{rowline.YTD_PREM_GROWTH_PERC}}%</td>
+                                       <td class="tableColumnStyle" >{{rowline.MTD_OPP_NOP}}</td>
+                                       <td class="tableColumnStyle" >{{rowline.MTD_PENT_PERC}}%</td>
+                                       <td class="tableColumnStyle" >{{rowline.LYMTD_PENT_PERC}}%</td>
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.DELTA_MTD_PENT >= 0)?'growth':'degrowth'">{{rowline.DELTA_MTD_PENT}}%</td>
+
+                                       
+                                       <td class="tableColumnStyle" >{{rowline.CYLMTD_PENT_PERC}}%</td>
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.DELTA_MTD_VS_CYLMTD_PENT >= 0)?'growth':'degrowth'">{{rowline.DELTA_MTD_VS_CYLMTD_PENT}}%</td>
+                                       <td class="tableColumnStyle">{{rowline.MTD_CONV_PREMIUM}}</td>
+                                       <td class="tableColumnStyle">{{rowline.LYMTD_CONV_PREMIUM}}</td>
+                                       
+
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.MTD_PREM_GROWTH_PERC >= 0)?'growth':'degrowth'">{{rowline.MTD_PREM_GROWTH_PERC}}%</td>
+                                       <td class="tableColumnStyle">{{rowline.CYLMTD_CONV_PREMIUM}}</td>
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.MTD_VS_CYLMTD_PREM_GROWTH_PERC >= 0)?'growth':'degrowth'">{{rowline.MTD_VS_CYLMTD_PREM_GROWTH_PERC}}%</td>
+                                       
+                                       <td class="tableColumnStyle" >{{rowline.LMIS_MTD_PENT_PERC}}%</td>
+
+                                       
+
+                                       
+                                       <td class="tableColumnStyle" [ngClass]="(rowline.DELTA_MTD_VS_LMIS >= 0)?'growth':'degrowth'">{{rowline.DELTA_MTD_VS_LMIS}}%</td> -->
+                                        
+                                       
+                                        
+                                    </tr>  
+
+                                </ng-container>                  
+                              
+                            </tbody>
+                          </table>
+
+
+
+                        <table *ngIf="monthOnMonthFlag == 1" class="table table-hover">
+
+                        <thead>
+                            <tr>
+                                <th style="padding:0 !important" [attr.colspan]="details_keyColcount" *ngIf="details_keyColcount!=0" class="columnColor"></th>
+                                <ng-container *ngFor="let eachMonth of monthYearList">
+                                    <th style="padding:0 !important" class="columnColor" colSpan="7">{{eachMonth}}</th>
+                                </ng-container>
+                                <!-- <th colspan="7"  class="columnColor">YTD</th>
+                                <th colspan="11"  class="columnColor">MTD</th>
+                                <th colspan="2"  class="columnColor">MTD LMIS</th> -->
+                            </tr>
+                            
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th style="padding:0 !important" [attr.colspan]="details_keyColcount" *ngIf="details_keyColcount!=0"  class="columnColor"></th>
+
+                                <ng-container *ngFor="let eachMonth of monthYearList">
+                                    <th style="padding:0 !important" class="columnColor" colSpan="4">NOP</th>
+                                    <th style="padding:0 !important"  class="columnColor" colSpan="3">PREMIUM</th>
+
+                                </ng-container>
+                                <!-- <th colspan="4"  class="columnColor">NOP</th>
+                                <th colspan="3"  class="columnColor">PREM</th>
+                                <th colspan="6"  class="columnColor">NOP</th>
+                                <th colspan="5"  class="columnColor">PREM</th>
+                                <th colspan="2"  class="columnColor">NOP</th> -->
+                            </tr>
+                            
+                        </thead>
+
+                        <thead>
+                            <tr>
+                            <ng-container *ngFor="let col of details_mainColList">
+                                <th class="columnColor">{{col}}</th>
+                            </ng-container>
+                            <ng-container *ngFor="let eachMonth of monthYearList">
+                                <th scope="col"  class="columnColor" >OPP</th>
+                                <th scope="col"  class="columnColor" >%PENT</th>
+                                <th scope="col"  class="columnColor" >LYFTM %PENT</th>
+                                <th scope="col"  class="columnColor" >%Variance</th>
+
+                                <th scope="col"  class="columnColor" >PREM CONV</th>
+                                <th scope="col"  class="columnColor" >LYFTM PREM CONV</th>
+                                <th scope="col"  class="columnColor" >GROWTH</th>
+
+
+                            </ng-container>
+
+
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let rowline of details_filteredResult" >
+
+                                <tr [ngClass]="(rowline.BUSINESS_CATEGORY == 'Customer Loyalty Total')?'rowColor_CLtotal':''">
+
+                                    <ng-container *ngFor="let col of details_mainColList">
+                                        <td class="tableColumnStyle">{{rowline[col]}}</td>
+                                    </ng-container>
+
+
+
+                                    <ng-container *ngFor="let eachMonth of monthYearList">
+                                        
+                                        <td class="tableColumnStyle">{{rowline[eachMonth + '_OPP_NOP']}}</td>
+                                        <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_PENT_PERC'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_PENT_PERC']}}%</td>
+                                        <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_LYFTM_PENT_PERC'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_LYFTM_PENT_PERC']}}%</td>
+                                        <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_PERC_DELTA'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_PERC_DELTA']}}%</td>
+    
+                                        <td class="tableColumnStyle">{{rowline[eachMonth + '_CONV_PREM']}}</td>
+                                        <td class="tableColumnStyle">{{rowline[eachMonth + '_LYFTM_CONV_PREM']}}</td>
+                                        <td class="tableColumnStyle" [ngClass]="(rowline[eachMonth + '_GROWTH'] >= 0)?'growth':'degrowth'">{{rowline[eachMonth + '_GROWTH']}}%</td>
+    
+                                       
+    
+            
+            
+                                        </ng-container>
+                                    
+                                </tr>  
+
+                            </ng-container>                  
+                            
+                        </tbody>
+                        </table>
+                    </div>
+
+                    
+                </div>
+                
+                
+
+            </div>
+            
+            
+           
+        </div>
+    </div>
+</ng-container>
+
+
+
+<!-- -----------loading screen----------- -->
+<div *ngIf="loadingStatus" class="loading" style="z-index: 1; width: 100%; height:100%; background-color: rgba(0, 0, 0, 0.589); position: fixed; top:0%; left: 0%;">
+    <div class="text-center" style="padding-top: 22%; display: flex; justify-content: center; align-items: center;">
+        <!-- <mat-spinner   color="cyan"></mat-spinner> -->
+        <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>   
+</div>
+
+
+
+
+
+
+

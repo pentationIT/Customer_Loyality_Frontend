@@ -1,0 +1,127 @@
+<ng-container>
+    <div class="fullPage" >
+
+        <div class="content-area">
+
+            <div class="row reportNamePad pageName">
+                <div class="col-6">
+                    <p class="reportName">Meeting Tracker</p>
+                </div>
+                <div class="col-6" style="display: flex; justify-content: right;">
+                    
+                </div>
+                
+            </div>
+            
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Meeting Date</span> 
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="date" [(ngModel)]="meetingDate">
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Discussion Type</span>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control" name="" id="" [(ngModel)]="discussionType">
+                        <option value="">Select</option>
+                        <option *ngFor="let type of discussionType_list" value="{{type}}">{{type}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Business Stake Holder Name</span>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" [(ngModel)]="businessStakeHolderName">
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Business Stake Holder Channel</span>                
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" [(ngModel)]="businessStakeHolderChannel">
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Business Stake Holder Sub-Channel</span>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="text" [(ngModel)]="businessStakeHolderSubChannel">
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <div class="col-sm-3">
+                    <span>Current rr Percentage</span>
+                </div>
+                <div class="col-sm-3">
+                    <input class="form-control" type="number" [(ngModel)]="currentRrPercentage">
+                </div>
+            </div>
+
+            <div class="inputSectionsGap"></div>
+            <!-- <div class="inputSectionsGap"></div> -->
+            <div class="inputSectionsGap"></div>
+    
+            <div class="row inputSection">
+                <!-- <div class="col-sm-12">
+                    <span>Meeting Description</span>
+                </div> -->
+                <div class="col-sm-6">
+                    <!-- <input class="form-control" type="text"> -->
+                    <textarea class="form-control"  placeholder="Meeting Description..." name="" id="" cols="30" rows="3"  [(ngModel)]="meetingDescription"></textarea>
+                </div>
+                <!-- <div class="col-sm-3"></div> -->
+            </div>
+
+            <div class="inputSectionsGap"></div>
+
+            <div class="row inputSection">
+                <div class="col-sm-6 text-right" >
+                    <div class="row">
+                        <div class="col-6">
+                            
+                        </div>
+                        <div class="col-3" style="padding: 0px">
+                            <button class="cancelBtn" (click)="clearAll()">Clear All</button>
+                        </div>
+                        <div class="col-3" style="padding: 0px">
+                            <button class="saveBtn" (click)="executeSubmitButton()">Submit</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-sm-6">
+                    <!-- <input class="form-control" type="text"> -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <br><br><br><br> -->
+
+        
+    </div>
+</ng-container>

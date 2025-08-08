@@ -1,0 +1,288 @@
+<!-- the below commented part is the common template for all the pages which have a side nav -->
+
+<!-- <ng-container>
+    <div class="row">
+        <div class="sidenav"   [ngClass]="(sideNavOpen == false)?'sidenav_close':''">
+        </div>
+        <div class="mainArea"  [ngClass]="(sideNavOpen == false)?'mainArea_max':''">
+
+            <button class="toogleSidenav" (click)="sideNavOpen = !sideNavOpen"  [ngClass]="(sideNavOpen == false)?'toogleSidenav_close':''">
+                <i *ngIf="sideNavOpen" class="fa fa-arrow-left"></i>
+                <i *ngIf="!sideNavOpen" class="fa fa-arrow-right"></i>
+            </button>
+           
+        </div>
+    </div>
+</ng-container> -->
+
+<!-- <mat-spinner></mat-spinner> -->
+
+<ng-container>
+    <div class="row">
+       
+
+
+
+
+
+
+
+
+
+
+        <div class="mainArea mainArea_max">
+
+            
+
+            <div class="row mainAreaPad">                
+
+                <div class="col-12">
+
+                   <!-- hi -->
+                   <!-- emp_id, email, mobile, name, designation, organization, status, date_added -->
+                   <table  class="table table-hover">
+
+                    <thead>
+                        <tr>
+                            
+                                <th class="columnColor" style="padding: 0 !important;" >Name</th>
+                                <th class="columnColor" style="padding: 0 !important;" >Mobile No.</th>
+
+                                <th class="columnColor" style="padding: 0 !important;" >Email Id</th>
+                                <th class="columnColor" style="padding: 0 !important;" >Designation</th>
+
+                                <th class="columnColor" style="padding: 0 !important;" >Organization</th>
+                                <th class="columnColor" style="padding: 0 !important;" >Status</th>
+                                <th class="columnColor" style="padding: 0 !important;" >Date</th>
+                                <th class="columnColor" style="padding: 0 !important;" >Action</th>
+
+
+
+
+
+
+                            
+                        </tr>
+                        
+                    </thead>
+                   
+
+                   
+                    <tbody>
+                        <ng-container *ngFor="let user of user_list;">
+                                <tr>
+
+                                <td class="tableColumnStyle">{{user.name}}</td>
+                                <td class="tableColumnStyle">{{user.mobile}}</td>
+
+                                <td class="tableColumnStyle">{{user.email}}</td>
+                                <td class="tableColumnStyle">{{user.designation}}</td>
+
+                                <td class="tableColumnStyle">{{user.organization}}</td>
+
+                                <td class="tableColumnStyle">{{user.status}}</td>
+                                <td class="tableColumnStyle">{{user.date_added}}</td>
+                                <td class="tableColumnStyle" style="display: flex;"><button *ngIf="user.status == 'enable'" style="background-color: rgb(218, 77, 77);" class="filterApplyButton" (click)="enableDisableUser(user.user_agent_id, 'disable')" >Disable</button>
+                                    <button *ngIf="user.status == 'disable'" style="background-color: rgb(53, 114, 53)" class="filterApplyButton" (click)="enableDisableUser(user.user_agent_id, 'enable')" >Enable</button> &nbsp; 
+                                    <!-- <button class="filterApplyButton" [disabled]="user.status == 'enable'" (click)="openModal(userdetails); getAccessUser(user.user_agent_id);">Edit</button> -->
+
+                                    <button class="filterApplyButton"  (click)="openModal(userdetails); getAccessUser(user.user_agent_id);">Edit</button>
+                                </td>
+
+
+
+                            </tr>
+                            </ng-container>
+
+
+                       
+                      
+                    </tbody>
+                  </table>
+
+
+                  
+
+
+                </div>
+                
+                
+
+            </div>
+            
+           
+        </div>
+    </div>
+</ng-container>
+
+
+
+<ng-template #userdetails>
+    <div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 50px; padding: 2% !important; font-size: 13pt;">
+        User Details
+    </div>
+<div style="height: 100%; width: 100%; padding: 2%;">
+    <div class="row " style="    margin-top: 1rem !important;">
+
+        <div class="col-2 form-label"><span >Name of User</span></div>
+        <div class="col-4">
+            <input class="form-control" [disabled]="true" type="text" [(ngModel)]="user_data.name">
+        </div>
+    
+    
+        <div class="col-2 form-label"><span >Employee Id</span></div>
+        <div class="col-4">
+            <input class="form-control" [disabled]="true" type="text" [(ngModel)]="user_data.emp_id">
+        </div>
+    
+        
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+    
+    
+        <div class="col-2 form-label" ><span >Email Id</span></div>
+        <div class="col-4">
+            <input class="form-control" [disabled]="true" type="text" [(ngModel)]="user_data.email">
+        </div>
+    
+    
+        <div class="col-2 form-label"><span >Mobile No.</span></div>
+        <div class="col-4">
+            <input class="form-control"  type="number" [(ngModel)]="user_data.mobile">
+        </div>
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+        <div class="col-2 form-label"><span >Designation</span></div>
+        <div class="col-4">
+            <input class="form-control"  type="text" [(ngModel)]="user_data.designation">
+        </div>
+    
+        <div class="col-2 form-label"><span >Organization</span></div>
+        <div class="col-4">
+            <input class="form-control"  type="text" [(ngModel)]="user_data.organization">
+        </div>
+    
+        
+    
+    
+        
+    
+    </div>
+    
+    
+    <div class="row " style="    margin-top: 1rem !important;">
+    
+        <!-- <div class="col-2 form-label"><span >Main Channel</span></div>
+        <div class="col-4">
+            <div class="multiselectFilter">
+                <ng-multiselect-dropdown
+                    
+                    [settings]="mainChannel_dropdownSettings"
+                    [data]="mainChannel_dropdownList"
+                    [(ngModel)]="user_data.mainchannel"
+    
+                    (onSelect)="get_subChannel_list();get_imdChannel_list()"
+                    (onSelectAll)="get_subChannel_list();get_imdChannel_list();"
+                    (onDeSelect)="get_subChannel_list();get_imdChannel_list();"
+                    (onDeSelectAll)="get_subChannel_list();get_imdChannel_list();"
+                    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div> -->
+    
+        <div class="col-2 form-label"><span >Imd Channel</span></div>
+        <div class="col-4">
+            <div class="multiselectFilter">
+                <!-- <span class="filterLabel" >IMD CHANNEL</span> -->
+                <ng-multiselect-dropdown
+                    
+                    [settings]="imdChannel_dropdownSettings"
+                    [data]="imdChannel_dropdownList"
+                    [(ngModel)]="user_data.imdchannel"
+    
+                    (onSelect)="get_subChannel_list();"
+                    (onSelectAll)="get_subChannel_list();"
+                    (onDeSelect)="get_subChannel_list();"
+                    (onDeSelectAll)="get_subChannel_list();"
+    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+        <div class="col-2 form-label"><span >Sub Channel</span></div>
+        <div class="col-4">
+            <div class="multiselectFilter">
+                <!-- <span class="filterLabel" >SUB CHANNEL NAME</span> -->
+                <ng-multiselect-dropdown
+                    
+                    [settings]="subChannelCodeName_dropdownSettings"
+                    [data]="subChannelCodeName_dropdownList"
+                    [(ngModel)]="user_data.subchannel"
+                    
+                    >
+                </ng-multiselect-dropdown>
+            </div>
+        </div>
+    
+        
+    
+    </div>
+    <div class="row" style="    margin-bottom: 3rem !important;">
+        
+    </div>
+    
+    
+    <div class="row" style="position: absolute; bottom: 5%; right: 3%;">
+        <button class="filterApplyButton" style="width: 150px;" (click)="openConfirmation(confirmationBox)">Approve</button>
+    </div>
+
+
+</div>
+</ng-template>
+
+
+
+
+<ng-template #confirmationBox>
+    <div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 35px; padding: 2% !important; font-size: 13pt;">
+        !!! Confirmation
+    </div>
+<div style="height: 100%; width: 100%; padding: 2%;">
+    <div class="row " style="    margin-top: 1rem !important;">
+
+        <div class="col-12">
+            Are you sure? Do you want to approve this?
+        </div>
+        
+    
+    </div>
+    
+    
+    
+    
+    <div class="row"  style="    margin-top: 1rem !important;">
+        <div class="col-12" style="display: flex;">
+
+            <button class="filterApplyButton"  style="width: 150px;background-color:gray" (click)="closeModal()">No</button>
+
+            &nbsp;
+        <!-- </div>
+        <div class="col-6"> -->
+
+            <button class="filterApplyButton" style="width: 150px;" (click)="approveUser()">Yes</button>
+        </div>
+
+    </div>
+
+
+</div>
+</ng-template>

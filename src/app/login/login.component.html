@@ -1,0 +1,153 @@
+
+
+
+    
+  <div class="content" style="height: 100%;background-image: radial-gradient(white, white, #d7d7d7);">
+    
+    <div style="margin:auto; width:30vw">
+      <div class="row " >
+        <!-- <div class="col-md-3"></div> -->
+
+        
+        <!-- <div class=" borderPadding contents" > -->
+          <!-- <div class="row justify-content-center" > -->
+
+
+            <!-- <div class="col-md-8" style="padding:5%; background-color:#f7f7ff;  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"> -->
+              <div class="" style="width: 100%;">
+            
+              <div class="row" style="display: flex; justify-content: center;">
+                <img src="assets/image/bajajlogo.png" alt="logo" >
+              </div>
+
+              <!-- <div class="mt-3 mb-4">
+                <br>
+              <h2 style="font-size: 22px!important;">Sign In</h2>
+              <br>
+
+            </div> -->
+              <div class="form-group first mt-4" >
+                <!-- <label for="username">Username</label> -->
+                <input type="text" class="form-control t_input" id="username"  placeholder="username" [(ngModel)]="username">
+                <!-- <br> -->
+
+                <!-- <mat-checkbox [(ngModel)]="isRenewal" [disabled]="page == 2" (onSelect)="toggleRights()">Renewal</mat-checkbox>
+                <mat-checkbox [(ngModel)]="isEmployeeMaster" [disabled]="page == 2" (onSelect)="toggleRights()">Employee Master</mat-checkbox> -->
+
+                <!-- <mat-radio-group aria-label="Select an option" [(ngModel)]="isRenewal" [disabled]="page == 2" color="primary">
+                  <mat-radio-button value="1">Renewal &nbsp; &nbsp; &nbsp; &nbsp;</mat-radio-button>
+                  <mat-radio-button value="0"> Employee Master</mat-radio-button>
+                </mat-radio-group> -->
+
+              </div>
+
+              <div class="form-group last mb-4" style="position: relative;" >
+                <!-- <label for="password">Password</label> -->
+                <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" class="form-control t_input" id="password" [(ngModel)]="password" (keyup.enter)="login()">
+                <!-- <span toggle="#passKey" [class]="showPassword ?'fa fa-fw fa-eye-slash field-icon toggle-password':'fa fa-fw fa-eye field-icon'" (click)="showPassword = !showPassword"></span> -->
+                <!-- <span toggle="#passKey" *ngIf="!showPassword" class="field-icon" (click)="showPassword = !showPassword"><mat-icon style="color: rgba(7, 80, 116, 0.733) !important;">visibility</mat-icon></span> -->
+
+                <!-- <span  toggle="#passKey" *ngIf="showPassword" class="field-icon toggle-password" (click)="showPassword = !showPassword"><mat-icon style="color: rgba(7, 80, 116, 0.733) !important;">visibility_off</mat-icon></span> -->
+
+                <mat-icon style="    position: absolute;
+                right: 0;
+                top: -21px;
+                font-size: 33pt;
+                color: rgb(53, 139, 238); cursor: pointer;"  (click)="login()">arrow_circle_right</mat-icon>
+
+              </div>
+              <div class="form-group last mb-4" >
+                <div class="row">
+                  <div class="col-md-6" style="padding-left: 0!important;color:black !important"> <span style="color:black"><input type="checkbox" name="" id="" > Keep me signed in </span> </div>
+                  <div class="col-md-6" style="text-align: right; padding-right: 0!important; cursor: pointer;"><a (click)="openModal(forgotpassword)">Forgot Password?</a></div>
+
+                </div>
+
+              </div>
+
+
+              <!-- <br> -->
+
+              <!-- <div class="form-group first mt-4"> -->
+                <div class="row" style="display: flex; justify-content: center; display: none;" >
+                  <!-- <div class="col-6" style="padding:0% !important; padding-right: 7px !important; margin: 0% !important;" >
+
+                    <button  class="filterApplyButton"  style="background-color: rgb(201 201 201);
+                    border: solid #c3c3c3;" [disabled]="page == 1" (click)="page=1" >
+    
+                      <span style="color:black">Back</span>
+                  </button>
+                  </div> -->
+                  <!-- <div class="col-1"></div> -->
+                  <div class="col-12" style="padding:0% !important; padding-left: 0px !important; margin: 0% !important;">
+                    <!-- {{page}} -->
+                    <!-- <button  *ngIf="page==1" class="filterApplyButton"   (click)="checkUserName()" >
+
+                      <span style="color:white" >Next</span>                      
+
+                    </button> -->
+
+                  <button  class="filterApplyButton"   (click)="login()">
+
+                    <!-- <span *ngIf="page==1" style="color:white" (click)="checkUserName()">Next</span> -->
+                    <span  style="color:white" >Log In</span>
+
+                </button>
+                  </div>
+                </div>
+               
+              <!-- </div> -->
+
+
+
+              
+
+                <!-- <div class="row" style="display: flex; justify-content: right;"> -->
+                  <div class="row" >
+                  <!-- <a href="" style="position:absolute; left: 15px;font-size: 10pt;">Forgot Password</a> -->
+                 
+                  <!-- <mat-icon  (click)="login()" title="Log In" style="font-size: 22pt; cursor:pointer;position:absolute; right: 15px;">arrow_circle_right</mat-icon> -->
+                </div>
+                
+              
+           <br>
+            
+          </div>
+          <!-- </div> -->
+          
+        <!-- </div> -->
+        <!-- <div class="col-md-3"></div> -->
+
+        
+      </div>
+    </div>
+
+    <div style="position: fixed; bottom: 5%; display: flex; justify-content: center;     align-items: center;">
+      <!-- <span> -->
+      <img src="assets/images/pentation_full.png" width="5%" alt="">
+      &nbsp;
+        &#x24B8; Pentation Analytics Pvt Ltd. All Rights Reserved.
+      <!-- </span> -->
+    </div>
+  </div>
+
+
+
+<ng-template #forgotpassword>
+    <div class="row" style="background-color: #053b5a; color:white; font-weight: bold; height: 40px; padding: 3% !important; font-size: 13pt;">
+        Forgot Password
+    </div>
+<div style="height: 100%; width: 100%; padding: 5%;">
+    <div class="row"> 
+        <span class="label" style="font-weight: bold;">Enter Registered Email Id</span>
+        
+        <input class="form-control"  type="text" [(ngModel)]="reg_email_id">
+    </div>
+
+    
+    <div class="row" style="margin-top: 1rem !important;">
+        <button class="filterApplyButton" style="color:white !important" (click)="fotgotPassword()">Send Temporary Password</button>
+    </div>
+</div>
+
+</ng-template>

@@ -1,0 +1,28 @@
+.mainArea{
+    /* padding-top: 60px !important; */
+}
+.multiselectFilter{
+    margin-bottom: 10px !important;
+    border: solid 1px #d7d7d7;
+    background: white;
+    width: 100%;
+}
+.form-label{
+    font-weight: bold;
+    padding: 1% !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.filterApplyButton:disabled{
+background-color: rgb(207, 206, 206);
+}
